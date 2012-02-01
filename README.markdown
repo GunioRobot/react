@@ -23,18 +23,18 @@ OK, here's some sample code that illustrates the basics:
 
       var updateProfileDiv = function(updatedUserInfo){
         var profileDiv = $('#profile');
-    
+
         profileDiv.find('.mugshot img').attr('src', user.mugshotUrl);
-    
+
         profileDiv.find('.mugshot .caption').html(user.mugshotCaption);
-    
+
         if(updatedUserInfo.isAdmin){
           profileDiv.find('.admin_links').show();
         } else {
           profileDiv.find('.admin_links').hide();
         }
       };
-    
+
       // later...
       updateProfileDiv(user);
     </script>

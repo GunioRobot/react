@@ -69,7 +69,7 @@ for (row = 6; row < 10; row++){
       }else if (is_horizontal_limit && col === 9){
         board[row][col].w_border = true;
       }
-    }  
+    }
     board[row][col].no_target = true;
   }
 }
@@ -90,7 +90,7 @@ var placeQuadrantTargets = function(verticalSide, horizontalSide){
 	//iterate over four targets to put four in each quadrant
   var which
 	for (which = 0; which < 4; which++) {
-		do {	
+		do {
 			var dest_row = (random_below(8) + verticalOffset);
 			var dest_col = (random_below(8) + horizontalOffset);
 		} while (board[dest_row][dest_col].no_target === true || board[dest_row][dest_col].is_target === true)
@@ -118,7 +118,7 @@ var placeQuadrantTargets = function(verticalSide, horizontalSide){
 		}
 		//putting the target in the array
 		targets.push(board[dest_row][dest_col]);
-		
+
 		//adding walls to the new target
 		if (which === 0) {
 		    board[dest_row][dest_col].e_border = true;
@@ -158,12 +158,12 @@ placeQuadrantTargets(true, true);
 var place_quadrant_bucket_walls = function (vertical_index, horizontal_index){
   var bucket_dest_row = Math.abs(15 * vertical_index - (random_below(4) + 3));
   var bucket_dest_col = Math.abs(15 * horizontal_index - (random_below(4) + 3));
-  
+
 	board[bucket_dest_row][(15 * horizontal_index)].s_border = true;
 	board[bucket_dest_row+1][(15 * horizontal_index)].n_border = true;
 	board[(15 * vertical_index)][bucket_dest_col].e_border = true;
 	board[(15 * vertical_index)][bucket_dest_col+1].w_border = true;
-  
+
 }
 
 place_quadrant_bucket_walls(false, false);
@@ -195,12 +195,12 @@ for (which = 0; which < robot_number; which++) {
 	do {
 	  var robot_row = random_below(16);
 	  var robot_col = random_below(16);
-	} while (board[robot_row][robot_col].is_target || 
-	  typeof board[robot_row][robot_col].robot === 'number' || 
+	} while (board[robot_row][robot_col].is_target ||
+	  typeof board[robot_row][robot_col].robot === 'number' ||
 	  (
 	    (board[robot_row][robot_col].row === 7 || board[robot_row][robot_col].row === 8) &&
-	    (board[robot_row][robot_col].col === 7 || board[robot_row][robot_col].col === 8) 
-	  )   
+	    (board[robot_row][robot_col].col === 7 || board[robot_row][robot_col].col === 8)
+	  )
 	)
     board[robot_row][robot_col].robot = which;
 	robot_list.push({
@@ -239,7 +239,7 @@ var move = {
   south: function () { return move.somewhere('row',  1, 's_border'); },
   east:  function () { return move.somewhere('col',  1, 'e_border'); },
   west:  function () { return move.somewhere('col', -1, 'w_border'); },
-  
+
   somewhere: function(axis, change, wallProperty){
     var location = {
       row: robot_list[current_robot].row,
